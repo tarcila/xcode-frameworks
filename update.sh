@@ -40,6 +40,7 @@ cp -R $frameworks/Symbols.framework ./Frameworks/Symbols.framework
 cp -R $frameworks/AudioToolbox.framework ./Frameworks/AudioToolbox.framework
 cp -R $frameworks/CoreAudio.framework ./Frameworks/CoreAudio.framework
 cp -R $frameworks/CoreAudioTypes.framework ./Frameworks/CoreAudioTypes.framework
+cp -R $frameworks/AVFoundation.framework ./Frameworks/AVFoundation.framework
 cp -R $frameworks/AudioUnit.framework ./Frameworks/AudioUnit.framework
 cp -R $frameworks/AVFAudio.framework ./Frameworks/AVFAudio.framework
 
@@ -55,14 +56,16 @@ cp -R $frameworks/CoreText.framework ./Frameworks/CoreText.framework
 cp -R $frameworks/ColorSync.framework ./Frameworks/ColorSync.framework
 
 # Input/Windowing frameworks & deps
-cp -R $frameworks/Carbon.framework ./Frameworks/Carbon.framework
-cp -R $frameworks/Cocoa.framework ./Frameworks/Cocoa.framework
 cp -R $frameworks/AppKit.framework ./Frameworks/AppKit.framework
-cp -R $frameworks/CoreData.framework ./Frameworks/CoreData.framework
+cp -R $frameworks/Carbon.framework ./Frameworks/Carbon.framework
 cp -R $frameworks/CloudKit.framework ./Frameworks/CloudKit.framework
+cp -R $frameworks/Cocoa.framework ./Frameworks/Cocoa.framework
+cp -R $frameworks/CoreHaptics.framework ./Frameworks/CoreHaptics.framework
+cp -R $frameworks/CoreData.framework ./Frameworks/CoreData.framework
 cp -R $frameworks/CoreLocation.framework ./Frameworks/CoreLocation.framework
-cp -R $frameworks/Kernel.framework ./Frameworks/Kernel.framework
+cp -R $frameworks/ForceFeedback.framework ./Frameworks/ForceFeedback.framework
 cp -R $frameworks/GameController.framework ./Frameworks/GameController.framework
+cp -R $frameworks/Kernel.framework ./Frameworks/Kernel.framework
 
 # Remove unnecessary files
 find . | grep '\.swiftmodule' | xargs rm -rf
