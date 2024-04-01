@@ -25,56 +25,31 @@ cp $libs/libobjc.tbd ./lib/
 cp $libs/libobjc.A.tbd ./lib/
 
 # General frameworks
-cp -R $frameworks/CoreFoundation.framework ./Frameworks/CoreFoundation.framework
-cp -R $frameworks/Foundation.framework ./Frameworks/Foundation.framework
-cp -R $frameworks/IOKit.framework ./Frameworks/IOKit.framework
-cp -R $frameworks/Security.framework ./Frameworks/Security.framework
-cp -R $frameworks/CoreServices.framework ./Frameworks/CoreServices.framework
-cp -R $frameworks/DiskArbitration.framework ./Frameworks/DiskArbitration.framework
-cp -R $frameworks/CFNetwork.framework ./Frameworks/CFNetwork.framework
-cp -R $frameworks/ApplicationServices.framework ./Frameworks/ApplicationServices.framework
-cp -R $frameworks/ImageIO.framework ./Frameworks/ImageIO.framework
-cp -R $frameworks/Symbols.framework ./Frameworks/Symbols.framework
+general=("CoreFoundation" "Foundation" "IOKit" "Security" "CoreServices" "DiskArbitration" "CFNetwork" "ApplicationServices" "ImageIO" "Symbols")
+for fw in ${general[@]}; do
+    cp -R "$frameworks/$fw.framework" "./Frameworks/$fw.framework"
+done
 
 # Audio frameworks
-cp -R $frameworks/AudioToolbox.framework ./Frameworks/AudioToolbox.framework
-cp -R $frameworks/CoreAudio.framework ./Frameworks/CoreAudio.framework
-cp -R $frameworks/CoreAudioTypes.framework ./Frameworks/CoreAudioTypes.framework
-cp -R $frameworks/AVFoundation.framework ./Frameworks/AVFoundation.framework
-cp -R $frameworks/AudioUnit.framework ./Frameworks/AudioUnit.framework
-cp -R $frameworks/AVFAudio.framework ./Frameworks/AVFAudio.framework
+audio=("AudioToolbox" "CoreAudio" "CoreMIDI" "CoreAudioTypes" "AudioUnit" "AVFoundation" "AVFAudio")
+for fw in ${audio[@]}; do
+    cp -R "$frameworks/$fw.framework" "./Frameworks/$fw.framework"
+done
 
 # Graphics frameworks
-cp -R $frameworks/Metal.framework ./Frameworks/Metal.framework
-cp -R $frameworks/OpenGL.framework ./Frameworks/OpenGL.framework
-cp -R $frameworks/CoreGraphics.framework ./Frameworks/CoreGraphics.framework
-cp -R $frameworks/IOSurface.framework ./Frameworks/IOSurface.framework
-cp -R $frameworks/QuartzCore.framework ./Frameworks/QuartzCore.framework
-cp -R $frameworks/CoreImage.framework ./Frameworks/CoreImage.framework
-cp -R $frameworks/CoreVideo.framework ./Frameworks/CoreVideo.framework
-cp -R $frameworks/CoreText.framework ./Frameworks/CoreText.framework
-cp -R $frameworks/ColorSync.framework ./Frameworks/ColorSync.framework
+graphics=("Metal" "OpenGL" "CoreGraphics" "IOSurface" "QuartzCore" "CoreImage" "CoreVideo" "CoreText" "ColorSync")
+for fw in ${graphics[@]}; do
+    cp -R "$frameworks/$fw.framework" "./Frameworks/$fw.framework"
+done
 
 # Input/Windowing frameworks & deps
-cp -R $frameworks/AppKit.framework ./Frameworks/AppKit.framework
-cp -R $frameworks/Carbon.framework ./Frameworks/Carbon.framework
-cp -R $frameworks/CloudKit.framework ./Frameworks/CloudKit.framework
-cp -R $frameworks/Cocoa.framework ./Frameworks/Cocoa.framework
-cp -R $frameworks/CoreHaptics.framework ./Frameworks/CoreHaptics.framework
-cp -R $frameworks/CoreData.framework ./Frameworks/CoreData.framework
-cp -R $frameworks/CoreLocation.framework ./Frameworks/CoreLocation.framework
-cp -R $frameworks/ForceFeedback.framework ./Frameworks/ForceFeedback.framework
-cp -R $frameworks/GameController.framework ./Frameworks/GameController.framework
-cp -R $frameworks/Kernel.framework ./Frameworks/Kernel.framework
+windowing=("AppKit" "Carbon" "CloudKit" "Cocoa" "CoreHaptics" "CoreData" "CoreLocation" "ForceFeedback" "GameController" "Kernel")
+for fw in ${windowing[@]}; do
+    cp -R "$frameworks/$fw.framework" "./Frameworks/$fw.framework"
+done
 
 # Remove unnecessary files
 find . | grep '\.swiftmodule' | xargs rm -rf
-rm -rf Frameworks/IOKit.framework/Versions/A/Headers/ndrvsupport
-rm -rf Frameworks/IOKit.framework/Versions/A/Headers/pwr_mgt
-rm -rf Frameworks/IOKit.framework/Versions/A/Headers/scsi
-rm -rf Frameworks/IOKit.framework/Versions/A/Headers/firewire
-rm -rf Frameworks/IOKit.framework/Versions/A/Headers/storage
-rm -rf Frameworks/IOKit.framework/Versions/A/Headers/usb
 
 # Trim large frameworks
 
